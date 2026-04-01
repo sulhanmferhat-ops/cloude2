@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dicle Fırat Enerji Grup Ltd Şti | Geleceğin Enerjisi</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <canvas id="particle-canvas"></canvas>
+
+  <!-- GALERİ MODAL -->
+  <div class="gallery-modal" id="galleryModal">
+    <div class="gm-header">
+      <div class="gm-title"><i class="fas fa-images"></i> Proje Galerisi <span id="gm-count"></span></div>
+      <button onclick="closeGalleryModal()" class="gm-close"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="gm-body" id="gmBody"></div>
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+      <button class="lb-arrow lb-prev" onclick="event.stopPropagation(); lbPrev()"><i class="fas fa-chevron-left"></i></button>
+      <div class="lb-content" onclick="event.stopPropagation()">
+        <img id="lbImg" src="" alt="" />
+        <div id="lbPlaceholder" class="lb-placeholder"><i class="fas fa-bolt"></i></div>
+        <div id="lbLabel" class="lb-label"></div>
+        <div id="lbCounter" class="lb-counter"></div>
+      </div>
+      <button class="lb-arrow lb-next" onclick="event.stopPropagation(); lbNext()"><i class="fas fa-chevron-right"></i></button>
+      <button class="lb-close-btn" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <div class="logo" onclick="scrollToTop()">
+        <i class="fas fa-bolt"></i> DİCLE FIRAT ENERJİ GRUP
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about" onclick="closeMenu()">Hakkımızda</a></li>
+        <li><a href="#services" onclick="closeMenu()">Hizmetlerimiz</a></li>
+        <li><a href="#gallery" onclick="closeMenu()">Arşiv</a></li>
+        <li><a href="#comments" onclick="closeMenu()">Yorumlar</a></li>
+        <li><a href="#contact" onclick="closeMenu()">İletişim</a></li>
+        <li><button onclick="openGalleryModal()" class="btn-galeri"><i class="fas fa-images"></i> Galeri</button></li>
+      </ul>
+      <button class="menu-toggle" onclick="toggleMenu()">
+        <i class="fas fa-bars" id="menuIcon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-glow"></div>
+    <div class="hero-content fade-up">
+      <div class="badge"><i class="fas fa-bolt"></i> #GeleceğinEnerjisi</div>
+      <h1>Temiz Enerji,<br><span class="gold-text">Güçlü Gelecek</span></h1>
+      <p>Güneş Enerji Sistemleri ve Proje Taahhüt İşlerinde Güvenilir Çözüm Ortağınız.</p>
+      <div class="hero-buttons">
+        <a href="#about" class="btn btn-primary">Bizi Tanıyın</a>
+        <a href="https://api.whatsapp.com/send?phone=905323484209" target="_blank" class="btn btn-secondary">
+          Destek Alın <i class="fas fa-chevron-right"></i>
+        </a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="ring ring-1"></div>
+      <div class="ring ring-2"></div>
+      <div class="hero-card">
+        <i class="fas fa-bolt hero-icon"></i>
+        <div class="hero-card-title">DİCLE FIRAT ENERJİ</div>
+        <div class="hero-card-sub">MÜHENDİSLİK &amp; PROJE</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- İSTATİSTİKLER -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-box">
+          <div class="counter" data-target="100">0</div><span class="stat-suffix">%</span>
+          <p>Kalite Garantisi</p>
+        </div>
+        <div class="stat-box">
+          <div class="counter" data-target="100">0</div><span class="stat-suffix">%</span>
+          <p>Müşteri Memnuniyeti Hedefi</p>
+        </div>
+        <div class="stat-box">
+          <div class="counter" data-target="22">0</div><span class="stat-suffix">+</span>
+          <p>Yıllık Sektörel Tecrübe</p>
+        </div>
+        <div class="stat-box">
+          <div class="counter" data-target="16">0</div><span class="stat-suffix"></span>
+          <p>Ülkede Proje Deneyimi</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HAKKIMIZDA -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Hakkımızda</div>
+        <h2>Enerjiyi Tecrübeyle Kuruyor,<br><span class="gold-text">Geleceğe Güç Veriyoruz</span></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-card reveal">
+          <div class="about-icon"><i class="fas fa-building"></i></div>
+          <h3>Şahin SULHAN</h3>
+          <p class="about-role">Kurucu &amp; Proje Müdürü</p>
+          <p class="about-sub">Elektrik Mühendisi &amp; Siyaset Bilimci</p>
+        </div>
+        <div class="about-text reveal">
+          <p><strong>Dicle Fırat Enerji Grup Ltd Şti</strong>, Elektrik ve enerji sektöründe faaliyet gösteren güçlü bir mühendislik ve proje firmasıdır. Elektrik proje ve taahhüt, GES (Güneş Enerjisi Sistemleri), güneş enerjisi panelleri kurulumu, trafo kurulumları, tarımsal sulama enerji sistemleri, mekanik proje ve taahhüt hizmetleri ile güvenlik kamera çözümleri alanlarında profesyonel hizmet sunmaktadır.</p>
+          <p>Elektrik mühendisi ve siyaset bilimci Şahin Sulhan tarafından kurulan firmamız; Türkiye başta olmak üzere Rusya, Belarus, Afrika ve Arap ülkeleri dâhil toplam <strong class="gold-text">16 farklı ülkede</strong> birçok başarılı projeye imza atmıştır.</p>
+          <p>Uluslararası tecrübe, kaliteli ekipman ve profesyonel mühendislik anlayışıyla müşterilerimize güvenilir, ekonomik ve sürdürülebilir enerji çözümleri sunuyoruz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HİZMETLER -->
+  <section id="services" class="section section-dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Hizmetlerimiz</div>
+        <h2>Mühendislik Çözümlerimiz</h2>
+      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="fas fa-solar-panel"></i></div>
+          <h3>GES (Güneş Enerjisi Sistemleri)</h3>
+          <p>Ev, iş yeri, fabrika ve tarımsal sulama alanları için güneş enerjisi sistemleri ve panelleri kurulumu.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="fas fa-bolt"></i></div>
+          <h3>Elektrik Proje Ve Taahhüt</h3>
+          <p>AG ve OG Elektrik projeleri, enerji altyapı çözümleri ve tesis kurulumları.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="fas fa-wrench"></i></div>
+          <h3>Mekanik Proje Ve Taahhüt</h3>
+          <p>Endüstriyel tesisler, iş yerleri ve projeler için mekanik proje ve uygulama hizmetleri.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="fas fa-plug"></i></div>
+          <h3>Trafo Kurulumları</h3>
+          <p>Trafo merkezleri kurulumu, bakım ve enerji dağıtım çözümleri.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="fas fa-tint"></i></div>
+          <h3>Tarımsal Sulama Enerji Sistemleri</h3>
+          <p>Kuyu ve sulama sistemleri için güneş enerjisi çözümleri.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="fas fa-fire"></i></div>
+          <h3>Doğal Gaz Proje Ve Abone İşlemleri</h3>
+          <p>Doğal gaz proje çizimi ve abonelik işlemleri.</p>
+        </div>
+        <div class="service-card reveal">
+          <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+          <h3>Güvenlik Ve Kamera Sistemleri</h3>
+          <p>Ev, iş yeri ve tesisler için güvenlik kamera ve alarm sistemleri.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEDEN BİZ -->
+  <section class="section">
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-text reveal">
+          <div class="section-label">Neden Biz?</div>
+          <h2>Uluslararası Vizyon,<br><span class="gold-text">Yerel Hassasiyet</span></h2>
+          <ul class="why-list">
+            <li class="reveal"><span class="why-icon"><i class="fas fa-medal"></i></span>22 Yılı Aşkın Sektör Tecrübesi</li>
+            <li class="reveal"><span class="why-icon"><i class="fas fa-globe"></i></span>16 Ülkede Uluslararası Deneyim</li>
+            <li class="reveal"><span class="why-icon"><i class="fas fa-hard-hat"></i></span>Profesyonel Mühendislik Kadrosu</li>
+            <li class="reveal"><span class="why-icon"><i class="fas fa-cogs"></i></span>Güçlü Teknik Altyapı</li>
+            <li class="reveal"><span class="why-icon"><i class="fas fa-handshake"></i></span>Uygun Maliyet ve Güven</li>
+          </ul>
+        </div>
+        <div class="why-visual reveal">
+          <i class="fas fa-globe why-globe"></i>
+          <div class="why-number">16 Ülke</div>
+          <p>Türkiye, Rusya, Belarus, Afrika ve Arap ülkeleri başta olmak üzere küresel enerji ağımız.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARŞİV -->
+  <section id="gallery" class="section section-dark">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Arşiv</div>
+        <h2>Projelerimizden Kareler</h2>
+        <p class="section-desc">Tüm fotoğrafları tam ekranda görüntülemek için <strong>Galeri</strong> butonunu kullanın.</p>
+      </div>
+      <div class="gallery-open-wrap">
+        <button onclick="openGalleryModal()" class="btn btn-primary">
+          <i class="fas fa-images"></i> Galeriyi Aç
+        </button>
+      </div>
+      <div class="gallery-preview" id="galleryPreview"></div>
+    </div>
+  </section>
+
+  <!-- YORUMLAR -->
+  <section id="comments" class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-label">Yorumlar</div>
+        <h2>Müşterilerimiz <span class="gold-text">Ne Diyor?</span></h2>
+      </div>
+      <div class="comments-grid">
+        <div class="comment-form-wrap reveal">
+          <div class="comment-form-card">
+            <h4><i class="fas fa-paper-plane"></i> Yorum Yap</h4>
+            <form id="commentForm" onsubmit="submitComment(event)">
+              <div class="form-group">
+                <label>Adınız</label>
+                <input type="text" id="cName" placeholder="Adınızı girin" required />
+              </div>
+              <div class="form-group">
+                <label>Puanınız</label>
+                <div class="star-input" id="starInput">
+                  <i class="fas fa-star active" onclick="setRating(1)"></i>
+                  <i class="fas fa-star active" onclick="setRating(2)"></i>
+                  <i class="fas fa-star active" onclick="setRating(3)"></i>
+                  <i class="fas fa-star active" onclick="setRating(4)"></i>
+                  <i class="fas fa-star active" onclick="setRating(5)"></i>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Yorumunuz</label>
+                <textarea id="cText" rows="4" placeholder="Deneyiminizi paylaşın..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full">
+                <i class="fas fa-paper-plane"></i> Gönder
+              </button>
+              <div class="form-success" id="formSuccess">✓ Yorumunuz için teşekkürler!</div>
+            </form>
+          </div>
+        </div>
+        <div class="comments-list" id="commentsList"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER / İLETİŞİM -->
+  <footer id="contact">
+    <div class="footer-line"></div>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="logo"><i class="fas fa-bolt"></i> DİCLE FIRAT ENERJİ GRUP</div>
+          <p>Güvenilir, ekonomik ve sürdürülebilir enerji çözümleri sunan uluslararası mühendislik partneriniz.</p>
+          <div class="social-links">
+            <a href="https://instagram.com/dicle_firat_enerji" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://api.whatsapp.com/send?phone=905323484209" target="_blank"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-contact">
+          <h4>İletişim Bilgileri</h4>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <strong>Merkez Ofis</strong><br>
+              Yenişehir Mah. 8 Cadde No: 47/B<br>Silopi / ŞIRNAK
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <strong>E-Posta</strong><br>
+              <a href="mailto:diclefiratenerji@gmail.com">diclefiratenerji@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fab fa-instagram"></i>
+            <div>
+              <strong>Instagram</strong><br>
+              <a href="https://instagram.com/dicle_firat_enerji" target="_blank">@dicle_firat_enerji</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-phones">
+          <h4>Telefonlar</h4>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <strong class="gold-text">Proje Müdürü — Şahin SULHAN</strong><br>
+              <a href="tel:05323484209">0532 348 42 09</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <div>
+              <strong>Diğer İletişim Hatları</strong><br>
+              <a href="tel:05459035695">0545 903 56 95</a><br>
+              <a href="tel:05304648373">0530 464 83 73</a><br>
+              <a href="tel:05445103186">0544 510 31 86</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 Dicle Fırat Enerji Grup Ltd Şti. Tüm Hakları Saklıdır.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp -->
+  <a href="https://api.whatsapp.com/send?phone=905323484209" target="_blank" class="whatsapp-btn">
+    <div class="whatsapp-pulse"></div>
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>
